@@ -1,0 +1,322 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&family=Red+Hat+Display:wght@500;600&display=swap');
+
+@mixin media-breakpoint-up($media) {
+    @each $grid-breakpoint, $resolution in $grid-breakpoints {
+        @if $media == $grid-breakpoint {
+        @media only screen and (max-width: $resolution) {
+            @content;
+        }
+        }
+    }
+}
+
+$text-font: 'Lato', sans-serif;
+$title-font: 'Red Hat Display', sans-serif;
+
+$text-color: #565656;
+$title-color: #000000;
+$link-color: #000000;
+$light-color: #7B7B7B;
+$footer-bg: #F4F4F4;
+
+$grid-breakpoints: (
+    xs: 391px,
+    sm: 576px,
+    md: 768px,
+    lg: 992px,
+    xl: 1200px,
+    xxl: 1400px
+);
+
+* {
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+
+h1 {
+    font-family: $title-font;
+    font-weight: 600;
+    font-size: 3rem;
+    line-height: 133%;
+    letter-spacing: 0.05em; 
+    color: $title-color;
+}
+h2 {
+    font-family: $title-font;
+    font-weight: 400;
+    font-size: 1.75rem;
+    line-height: 166%;
+    letter-spacing: 0.1em;
+    color: $title-color;
+}
+h3 {
+    font-family: $title-font;
+    font-weight: 500;
+    font-size: 1.45rem;
+    line-height: 166%;
+    letter-spacing: 0.1em;
+    color: $title-color;
+}
+p {
+    font-family: $text-font;
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 166%;
+    color: $text-color;
+    margin-bottom: 20px;
+}
+a {
+    text-decoration: none;
+    color: $link-color;
+}
+section {
+    padding: 45px 0;
+    &:first-child {
+        padding-top: 0;
+    }
+}
+.container {
+    width: 100%;
+    max-width: 1170px;
+    margin: 0 auto;
+}
+.row {
+    display: flex;
+}
+.gap {
+    gap: 30px;
+}
+.col-2 {
+    width: 50%;
+}
+.col-3 {
+    width: 33%;
+}
+.laptop-order-1 {
+    order: 1;
+}
+.laptop-order-2 {
+    order: 2;
+}
+.justify-content_between {
+    justify-content: space-between;
+}
+.justify-content_center {
+    justify-content: center;
+}
+.align-items_center {
+    align-items: center;
+}
+.align-items_stretch {
+    align-items: stretch;
+}
+.align-items_flex-start {
+    align-items: flex-start;
+}
+
+.header {
+    padding: 38px 0;
+    &__logo {
+        a {
+            text-decoration: none;
+            font-family: $text-font;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 150%;
+            letter-spacing: 0.5em;
+            color: $link-color;
+            text-transform: uppercase;
+        }
+    }
+}
+.footer {
+    margin-top: 45px;
+    padding: 70px 0 30px;
+    background: $footer-bg;
+    &__title {
+        margin-bottom: 30px;
+    }
+    &__item {
+        margin-bottom: 25px;
+    }
+    &__link {
+        text-decoration: none;
+        display: block;
+        font-family: $text-font;
+        font-style: normal;
+        font-size: 1rem;
+        line-height: 166%;
+        letter-spacing: 0.1em;
+        color: $link-color;
+        margin-bottom: 15px;
+    }
+    &__copyrighting {
+        font-size: 0,75rem;
+    }
+  
+}
+.social-networks {
+    display: flex;
+    padding: 0 -11.5px;
+    &__item {
+        margin: 0 11.5px;
+    }
+    &__link {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 50px;
+        height: 50px;
+        border: 1px solid $text-color;
+        &:hover {
+            background-color: $text-color;
+        }
+    }
+    &__img {
+        height: 26px;
+        width: auto;
+        path {
+            fill: $text-color;
+        }
+    }
+    &__link:hover > &__img path {
+            fill: $footer-bg;
+    }
+ }
+
+ .case-study {
+    &__title {
+        margin-bottom: 70px;
+    }
+    &__hero {
+        margin-bottom: 90px;
+    }
+    &__subtitle {
+        font-weight: 600;
+        margin-bottom: 50px;
+    }
+    &__img {
+        width: 100%;
+        height: 500px;
+        margin-bottom: 20px;
+        img, picture {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+    &__article {
+        margin-bottom: 90px;
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+ }
+
+
+
+@include media-breakpoint-up(xl) {
+    .container {
+      padding: 0 34px;
+    }
+}
+@include media-breakpoint-up(lg) {
+    .header {
+        padding: 23.5px 0;
+        &__menu {
+            order: 2;
+        }
+    }
+    .case-study {
+        &__img {
+            height: 380px;
+        }
+        &__col-2 {
+            width: 100%;
+        }
+    }
+}
+@include media-breakpoint-up(md) {
+    h1 {
+        font-size: 2.25rem;
+    }
+    .gap {
+        gap: 20px;
+    }
+    .col-3 {
+        width: 100%;
+    }
+    .footer {
+        margin-top: 35px;
+        padding: 50px 0;
+        &__row {
+            flex-wrap: wrap;
+        }
+        &__item {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 35px;
+        }
+        &__title {
+            margin-bottom: 20px;
+        }
+    }
+    .case-study {
+        &__title {
+            margin-bottom: 50px;
+        }
+        &__article {
+            margin-bottom: 70px;
+        }
+    }
+}
+@include media-breakpoint-up(sm) {
+    h1 {
+        font-size: 1.875rem;
+    }
+    h2 {
+        font-size: 1.675rem;
+    }
+    section {
+        padding: 35px 0;
+    }
+    .row {
+      flex-wrap: wrap;
+    }
+    .col-2 {
+        width: 100%;
+    }
+    .mobile-order-1 {
+        order: 1;
+    }
+    .mobile-order-2 {
+        order: 2;
+    }
+    .case-study {
+        &__title {
+            margin-bottom: 40px;
+        }
+        &__subtitle {
+            margin-bottom: 40px;
+        }
+        &__img {
+            height: 300px;
+        }
+    }
+}
+@include media-breakpoint-up(xs) {
+    .container {
+        padding: 0 10px;
+    }
+    .footer {
+        &__copyrighting {
+            text-align: center;
+            max-width: 250px;
+        }
+    }
+}
+ 
